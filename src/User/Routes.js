@@ -7,15 +7,19 @@ import Menu from '../core/Menu';
 import AdminRoutes from '../auth/AdminRoutes';
 import PrivateRoutes from '../auth/PrivateRoutes';
 import { signout } from '../auth';
+import UserDashboard from '../User/UserDashboard';
+import AdminDashboard from '../User/AdminDashboard';
 
 const Routes = () => (
     <BrowserRouter>
-    <Menu />
+        <Menu />
         <Switch>
             <Route path='/' exact component={Home} />
             <AdminRoutes path='/signup' exact component={Signup} />
             <Route path='/signin' exact component={Signin} />
             <PrivateRoutes path='/signout' exact component={signout} />
+            <PrivateRoutes path='/user/dashboard' exact component={UserDashboard} />
+            <AdminRoutes path='/admin/dashboard' exact component={AdminDashboard} />
         </Switch>
     </BrowserRouter>
 );
