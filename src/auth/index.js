@@ -1,18 +1,18 @@
 import { API } from '../configure';
 
-export const signUpFetch = user => {
-    return fetch(`${API}/api/signup`, {
+export const signUpFetch = (user,id,token) => {
+    return fetch(`${API}/api/signup/${id}`, {
         method: "post",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(user)
     })
         .then(Response => { return Response.json() })
         .catch(err => {
-            console.log(err)
-            return err;
+            console.log(err);
         })
 };
 

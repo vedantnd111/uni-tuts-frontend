@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../core/Layout';
-import { Link } from 'react-router-dom';
-import { signUpFetch } from '../auth';
+// import { Link } from 'react-router-dom';
+import { signUpFetch, isAuthenticated } from '../auth';
 
 const Signup = () => {
     const [values, setValues] = useState({
@@ -13,6 +13,7 @@ const Signup = () => {
     });
 
     const { name, email, password, error, success } = values;
+    const { user,token } = isAuthenticated();
 
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
@@ -21,9 +22,11 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false, });
-        signUpFetch({ name, email, password })
+        signUpFetch({ name, email, password },user._id, token)
             .then((data) => {
+                
                 if (data.error) {
+                    console.log(data);
                     setValues({ ...values, error: data.error, success: false });
                 }
                 else {
@@ -47,7 +50,7 @@ const Signup = () => {
 
     const showSuccess = () => {
         return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            New account. created please <Link to='/signin'>sign in</Link>
+            New account succesfully created created please 
         </div>
     };
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../core/Layout';
 import { Redirect } from 'react-router-dom';
-import { signInFetch, authenticate } from '../auth';
+import { signInFetch, authenticate, isAuthenticated } from '../auth';
 
 const SignIn = () => {
     const [values, setValues] = useState({
@@ -46,6 +46,9 @@ const SignIn = () => {
 
     const redirectUser = () => {
         if (redirectReferrer) {
+            return <Redirect to="/" />
+        }
+        if(isAuthenticated()){
             return <Redirect to="/" />
         }
     };
