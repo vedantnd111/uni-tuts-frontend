@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../style.css'
 function Layout({ title = "Title", description = "Description", children, className }) {
     return (
         <div>

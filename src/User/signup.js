@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 // import { Link } from 'react-router-dom';
 import { signUpFetch, isAuthenticated } from '../auth';
+import { fetchStandard } from './apiUser';
 
 const Signup = () => {
     const [values, setValues] = useState({
@@ -9,11 +10,32 @@ const Signup = () => {
         email: '',
         password: '',
         error: '',
-        success: false
+        success: false,
+        standards: [],
+        standard: ''
+
     });
 
-    const { name, email, password, error, success } = values;
-    const { user,token } = isAuthenticated();
+    const { name, email, password, error, success, standard, standards } = values;
+    const { user, token } = isAuthenticated();
+
+    const init = () => {
+        fetchStandard()
+            .then(data => {
+                if (data.error) {
+                    setValues({ ...values, error: data.error })
+                }
+                else {
+                    setValues({ ...values, standards: data });
+                }
+            })
+            .catch()
+    };
+
+    useEffect(() => {
+        init();
+    }, []);
+
 
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
@@ -22,9 +44,9 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false, });
-        signUpFetch({ name, email, password },user._id, token)
+        signUpFetch({ name, email, password,standard }, user._id, token)
             .then((data) => {
-                
+
                 if (data.error) {
                     console.log(data);
                     setValues({ ...values, error: data.error, success: false });
@@ -35,12 +57,15 @@ const Signup = () => {
                         email: '',
                         password: '',
                         error: '',
-                        success: true
+                        success: true,
+                        standards: [],
+                        standard: ''
                     });
                 }
 
             })
     };
+
 
     const showError = () => {
         return <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
@@ -50,7 +75,7 @@ const Signup = () => {
 
     const showSuccess = () => {
         return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            New account succesfully created created please 
+            New account succesfully created!!
         </div>
     };
 
@@ -67,6 +92,18 @@ const Signup = () => {
             <div>
                 <label className="text-muted font-weight-bold">Enter password:</label>
                 <input type="password" value={password} onChange={handleChange('password')} className="form-control my-2 border-700" />
+            </div>
+            <div className="form-group">
+                <label className="text-muted font-weight-bold">Select standard:</label>
+                <select className="form-control" onChange={handleChange('standard')} value={standard} >
+                    <option>please select standard</option>
+
+                    {standards &&
+                        standards.map((c, i) => (
+                            <option key={i} value={c._id}>{c.name}</option>
+                        )
+                        )}
+                </select>
             </div>
 
             <button className="btn btn-outline-primary my-2" onClick={clickSubmit}>Sign up</button>
