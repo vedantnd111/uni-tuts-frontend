@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ShowImage from './ShowImage'
 import '../style.css'
+import { isAuthenticated } from '../auth'
 
-function Card({ standard }) {
+function Card({ standard, url,URL }) {
     return (
         <div className="col-md-3 mb-3">
             <div className="card">
@@ -11,16 +12,16 @@ function Card({ standard }) {
                     <br />
                 </h4>
                 <div className="card-body">
-                    <ShowImage item={standard} url="standard" />
+                    <ShowImage item={standard} url={url} />
                     <br />
-                    <h4>Standard : {standard.name}</h4>
+                    <h4>{url} : {standard.name}</h4>
                     <p>
                         {standard.description}
                     </p>
 
                 </div>
-                <Link to="/signin" role="button" className="btn btn-outline-primary m-4" >
-                    Go to Topics
+                <Link to={!isAuthenticated() ? "/signin" : `/subject/topic/${standard._id}`} role="button" className="btn btn-outline-primary m-4" >
+                    Go to {URL}
                 </Link>
             </div>
         </div>

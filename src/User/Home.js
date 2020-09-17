@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import Card from './Card';
+import CardAdmin from '../Admin/CardAdmin';
 import { fetchStandard, fetchSubjectsByStandard } from './apiUser';
+import { Link } from 'react-router-dom';
+import ShowError from '../helpers/ShowError';
 
 function Home() {
     const { user, token } = isAuthenticated();
@@ -36,7 +39,7 @@ function Home() {
 
     useEffect(() => {
         loadStandards();
-        if (isAuthenticated()) {
+        if (isAuthenticated() && isAuthenticated().user.role === 0) {
 
             loadSubjects();
         }
@@ -44,13 +47,14 @@ function Home() {
 
     return (
         <div>
-            <Layout title="Home" description="this is a home page" className="container-fluid">
+            <Layout title="Home" description="Welcome to UNITED TUTORIALS!!" className="container-fluid">
                 {!isAuthenticated() && (
                     <div className="mb-4">
+                        <ShowError error={error} />
                         <div className="row">
 
                             {standards.map((standard, i) => (
-                                <Card key={i} standard={standard} />
+                                <Card key={i} standard={standard} url="standard" URL="subject" />
                             ))}
                         </div>
                     </div>
@@ -58,11 +62,31 @@ function Home() {
                 {isAuthenticated() && isAuthenticated().user.role === 0 &&
                     (
                         <div className="mb-4">
+                            <ShowError error={error} />
                             <div className="row">
                                 {subjects.map((subject, i) => (
-                                    <Card key={i} standard={subject} />
+                                    <Card key={i} standard={subject} url="subject" URL="topics" />
                                 ))}
 
+                            </div>
+
+                        </div>
+                    )
+                }
+                {isAuthenticated() && isAuthenticated().user.role === 1 &&
+                    (
+                        <div className="mb-4">
+                            <div className="row">
+
+                                {standards.map((standard, i) => (
+                                    <CardAdmin key={i} standard={standard} URL2="standard" url="subject" />
+                                ))}
+                                <Link to="/standard/create" className="card" role="button" >
+                                    <div className="card-body">
+                                        <i class="material-icons">add</i>
+                                        <h1 style={{ color: 'black' }}>Add Standards</h1>
+                                    </div>
+                                </Link>
                             </div>
 
                         </div>

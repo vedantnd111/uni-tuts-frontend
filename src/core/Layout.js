@@ -4,7 +4,7 @@ function Layout({ title = "Title", description = "Description", children, classN
     return (
         <div>
 
-            <div className="jumbotron">
+            <div className="jumbotron" >
                 <h1>{title}</h1>
                 <p className="lead">{description}</p>
             </div>

@@ -3,6 +3,9 @@ import Layout from '../core/Layout';
 // import { Link } from 'react-router-dom';
 import { signUpFetch, isAuthenticated } from '../auth';
 import { fetchStandard } from './apiUser';
+import ShowError from '../helpers/ShowError';
+import ShowSuccess from '../helpers/ShowSuccess';
+
 
 const Signup = () => {
     const [values, setValues] = useState({
@@ -66,19 +69,6 @@ const Signup = () => {
             })
     };
 
-
-    const showError = () => {
-        return <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
-            {error}
-        </div>
-    };
-
-    const showSuccess = () => {
-        return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            New account succesfully created!!
-        </div>
-    };
-
     const signupForm = () => (
         <form className="form-group">
             <div>
@@ -113,8 +103,8 @@ const Signup = () => {
 
     return (<div>
         <Layout title="Sign up" description="this is a signup page" className="container col-md-8 my-4 offset-md-2">
-            {showError()}
-            {showSuccess()}
+           <ShowError error={error} />
+           <ShowSuccess initial="new" msg="account" />
             {signupForm()}
 
         </Layout>

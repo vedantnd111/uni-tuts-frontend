@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react'
+import { useHistory, Link, Redirect } from 'react-router-dom';
+import { fetchTopicsBySubject } from '../User/apiUser';
+import { isAuthenticated } from '../auth';
+import CardView from './CardView';
+
+function TopicsBySubject() {
+    const [topics, setTopics] = useState([]);
+    const [error, setError] = useState(false);
+    const history = new useHistory();
+    const subjectId = history.location.pathname.split('/')[3];
+    const { user, token } = isAuthenticated();
+
+    const loadTopics = () => {
+
+        fetchTopicsBySubject(subjectId, user._id, token)
+            .then((data) => {
+                if (data.error) {
+                    setError(data.error);
+                }
+                else {
+                    setTopics(data);
+                    setError(false);
+                }
+            })
+    };
+    
+
+    useEffect(() => {
+        loadTopics();
+    }, []);
+
+    return (
+        <div className="container">
+            <div className="card m-4" style={{ width: "68rem" }}>
+                <ul className="list-group list-group-flush" >
+                    {topics.map((topic, i) => (
+                        <CardView key={i} topic={topic} />
+                    ))}
+                    <li className="list-group-item">
+                        <Link to={`/topic/create/${subjectId}`}
+                         role="button"
+                         style={{textDecoration:'none', color:'black'}}
+                         >
+                            {/* <i class="material-icons">add</i> */}
+                            <h1 style={{ color: 'black' }}>Add Topics</h1>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    )
+}
+
+export default TopicsBySubject

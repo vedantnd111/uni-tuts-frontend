@@ -43,11 +43,8 @@ function UserDashboard() {
     };
 
     return (
-        <Layout title="Dashboard" description={`Good day ${name}`} className="container-fluid" >
+        <Layout title="Dashboard" description={`Good day ${name}`} className="container" >
             <div className="row">
-                <div className="col-md-3">
-                    <UserLinks />
-                </div>
                 <div className="col-md-9">
                     <UserInfo />
                 </div>

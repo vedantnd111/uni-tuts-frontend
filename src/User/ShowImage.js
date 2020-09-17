@@ -7,7 +7,7 @@ function ShowImage({item,url}) {
             <img src={`${API}/api/${url}/photo/${item._id}`}
             alt={item.name}
             className="mb-3"
-            style={{maxHeight:'100%' , maxWidth:"100%"}} />
+            style={{Height:'100%' , Width:"100%"}} />
             
         </div>
     )

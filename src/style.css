@@ -4,6 +4,29 @@
     border-radius: 0px;
 }
 
+* {
+    /* font-family: 'Noto Sans TC', sans-serif; */
+    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* 
+.list-group-item:hover {
+    background-color: red;
+} */
+
+/* .list-group-item:hover {
+    -webkit-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    transform: scale(0.3);
+} */
+
+/* .nav {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+} */
+
 
 .product-img {
     min-height: 100px;
@@ -11,6 +34,10 @@
 
 .jumbotron h2 {
     margin-top: -20px;
+}
+
+.material-icons {
+    font-size: 6rem;
 }
 
 @media only screen and (max-width:600px) {
