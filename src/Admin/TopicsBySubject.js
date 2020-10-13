@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { fetchTopicsBySubject } from '../User/apiUser';
 import { isAuthenticated } from '../auth';
 import CardView from './CardView';
+import ShowError from '../helpers/ShowError';
 
 function TopicsBySubject() {
     const [topics, setTopics] = useState([]);
@@ -24,14 +25,15 @@ function TopicsBySubject() {
                 }
             })
     };
-    
+
 
     useEffect(() => {
         loadTopics();
-    }, []);
+    });
 
     return (
         <div className="container">
+            <ShowError error={error} />
             <div className="card m-4" style={{ width: "68rem" }}>
                 <ul className="list-group list-group-flush" >
                     {topics.map((topic, i) => (
@@ -39,9 +41,9 @@ function TopicsBySubject() {
                     ))}
                     <li className="list-group-item">
                         <Link to={`/topic/create/${subjectId}`}
-                         role="button"
-                         style={{textDecoration:'none', color:'black'}}
-                         >
+                            role="button"
+                            style={{ textDecoration: 'none', color: 'black' }}
+                        >
                             {/* <i class="material-icons">add</i> */}
                             <h1 style={{ color: 'black' }}>Add Topics</h1>
                         </Link>

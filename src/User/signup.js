@@ -13,7 +13,7 @@ const Signup = () => {
         email: '',
         password: '',
         error: '',
-        success: false,
+        // success: false,
         standards: [],
         standard: ''
 
@@ -37,7 +37,7 @@ const Signup = () => {
 
     useEffect(() => {
         init();
-    }, []);
+    });
 
 
     const handleChange = name => event => {
@@ -47,7 +47,7 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false, });
-        signUpFetch({ name, email, password,standard }, user._id, token)
+        signUpFetch({ name, email, password, standard }, user._id, token)
             .then((data) => {
 
                 if (data.error) {
@@ -103,8 +103,8 @@ const Signup = () => {
 
     return (<div>
         <Layout title="Sign up" description="this is a signup page" className="container col-md-8 my-4 offset-md-2">
-           <ShowError error={error} />
-           <ShowSuccess initial="new" msg="account" />
+            <ShowError error={error} />
+            <ShowSuccess success={success} initial="new" msg="account" />
             {signupForm()}
 
         </Layout>

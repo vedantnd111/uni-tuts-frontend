@@ -4,10 +4,10 @@ function PostForm({ name, description, photo, url, clickSubmit, handleChange }) 
     return (
         <Fragment>
             <form onSubmit={clickSubmit}>
-                <div className="form-group" style={{display:photo===''?'none':''}}>
+                <div className="form-group" style={{ display: photo === '' ? 'none' : '' }}>
                     <h6 className="text-muted">Select photo:</h6>
                     <label className="btn btn-secondary">
-                        <input type="file" onChange={()=>handleChange('photo')} name="photo" accept="image/*" />
+                        <input type="file" onChange={() => handleChange('photo')} name="photo" accept="image/*" />
                     </label>
                 </div>
                 <div className="form-group">

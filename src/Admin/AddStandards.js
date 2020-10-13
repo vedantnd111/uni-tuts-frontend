@@ -21,7 +21,7 @@ function AddStandards() {
         createdStandard: ''
     });
 
-    const { name, description, photo, error, success, loading, formData, createdStandard } = values;
+    const { name, description, error, success, loading, formData, createdStandard } = values;
 
     const handleChange = name => event => {
         const value = name === "photo" ? event.target.files[0] : event.target.value;

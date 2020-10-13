@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { isAuthenticated } from '../auth'
 import { useHistory } from 'react-router-dom';
 import { addSubjects } from './apiAdmin';
@@ -57,20 +57,20 @@ function AddSubjects() {
             })
     };
 
-    const showLoading = () => (
-        loading && <div className="alert alert-warning"><h3>loading...</h3></div>
-    );
-    const showError = () => {
-        return <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
-            <h5>{error}</h5>
-        </div>
-    }
+    // const showLoading = () => (
+    //     loading && <div className="alert alert-warning"><h3>loading...</h3></div>
+    // );
+    // const showError = () => {
+    //     return <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+    //         <h5>{error}</h5>
+    //     </div>
+    // }
 
-    const showSuccess = () => {
-        return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            <h3> Subject {createdSubject} is successfully created!!</h3>
-        </div>
-    }
+    // const showSuccess = () => {
+    //     return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+    //         <h3> Subject {createdSubject} is successfully created!!</h3>
+    //     </div>
+    // }
     const newSubjectForm = () => {
         return (
             <form onSubmit={clickSubmit}>

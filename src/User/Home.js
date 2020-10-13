@@ -43,7 +43,7 @@ function Home() {
 
             loadSubjects();
         }
-    }, []);
+    });
 
     return (
         <div>

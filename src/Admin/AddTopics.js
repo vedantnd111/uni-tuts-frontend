@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { isAuthenticated } from '../auth'
-import { fetchStandard, fetchSubjectsByStandard } from '../User/apiUser';
+// import { fetchStandard, fetchSubjectsByStandard } from '../User/apiUser';
 import { useHistory } from 'react-router-dom'
-import { addSubjects, addTopics } from './apiAdmin';
+import {  addTopics } from './apiAdmin';
 import Layout from '../core/Layout';
 import GoBack from '../helpers/GoBack';
 import ShowSuccess from '../helpers/ShowSuccess';
@@ -13,7 +13,7 @@ function AddTopics() {
     const history = new useHistory();
     const { user, token } = isAuthenticated();
     const subjectId = history.location.pathname.split('/')[3];
-    let photo = '';
+    // let photo = '';
 
     const [values, setValues] = useState({
         name: '',
@@ -26,7 +26,7 @@ function AddTopics() {
         formData: new FormData(),
         createdTopic: ''
     });
-    const { name, description, url, error, subject, success, loading, formData, createdTopic } = values;
+    const { name, description, url, error, success, loading, formData, createdTopic } = values;
 
     const handleChange = name => event => {
         const value = name === 'photo' ? event.target.files[0] : event.target.value;
