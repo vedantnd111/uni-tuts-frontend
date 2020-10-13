@@ -10,8 +10,10 @@ function Layout({ title = "Title", description = "Description", children, classN
             </div>
             <div className={className}>
 
-            {children}
+                {children}
             </div>
+            <footer className="m-4" style={{ textAlign: "center" }}>
+                <span style={{ fontSize: "25px" }}>&#169;</span> United Tutorials.pvt.ltd ,2020-2022.</footer>
         </div>
     )
 }
