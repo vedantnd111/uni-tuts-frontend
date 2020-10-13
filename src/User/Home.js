@@ -83,7 +83,7 @@ function Home() {
                                 ))}
                                 <Link to="/standard/create" className="card" role="button" >
                                     <div className="card-body">
-                                        <i class="material-icons">add</i>
+                                        <i className="material-icons">add</i>
                                         <h1 style={{ color: 'black' }}>Add Standards</h1>
                                     </div>
                                 </Link>
