@@ -1,31 +1,36 @@
 import React from 'react'
-import ReactPlayer from "react-player"
-import GoBack from '../helpers/GoBack'
+import ReactPlayer from "react-player";
+import Tabbar from '../core/Tabbar';
+// import GoBack from '../helpers/GoBack'
+import '../style.css';
 
 
 function VideoView(props) {
     return (
-        <div
-            className="d-flex justify-content-center align-items-center flex-column" >
-            <div>
-                <ReactPlayer
-                    url={props.location.state.url}
-                    className="react-player"
-                    width="1200px"
-                    height="650px"
-                    style={{ borderRadius: '5px' }}
-                />
+        <div className="container-fluid row">
+            <div className="col-md-9" style={{borderRight:"1px solid black"}}>
+                <div className="player-wrapper">
+                    <ReactPlayer
+                        url={props.location.state.url}
+                        className="react-player"
+                        width="100%"
+                        height="75%"
+                        controls
+                        muted
+                        config={{
+                            youtube: {
+                                playerVars: { showinfo: 1 }
+                            }
+                        }} />
+                </div>
+                <div>
+                    <Tabbar />
+                </div>
             </div>
+                <div className="col-md-3">
+                    <h1>It includes topic of same subject and class</h1>
 
-            <div className="mt-2">
-                <h1>{props.location.state.name}</h1>
-            </div>
-            <div>
-                <h5>
-                    {props.location.state.description}
-                </h5>
-            </div>
-            <GoBack />
+                </div>
         </div>
     );
 }

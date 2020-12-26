@@ -5,7 +5,7 @@ import '../style.css'
 
 function Card({ standard, URL2, url }) {
     return (
-        <div className="col-md-3 m-3">
+        <div className="col-md-4 m-3">
             <div className="card">
                 <h4 className="card-header">
                     <br />

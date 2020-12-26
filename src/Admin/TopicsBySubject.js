@@ -34,10 +34,10 @@ function TopicsBySubject() {
     return (
         <div className="container">
             <ShowError error={error} />
-            <div className="card m-4" style={{ width: "68rem" }}>
+            <div className="card m-4">
                 <ul className="list-group list-group-flush" >
                     {topics.map((topic, i) => (
-                        <CardView key={i} topic={topic} />
+                    <CardView key={i} topic={topic} />
                     ))}
                     <li className="list-group-item">
                         <Link to={`/topic/create/${subjectId}`}

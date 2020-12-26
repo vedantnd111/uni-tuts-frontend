@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuthenticated } from '../auth';
 import '../style.css';
-import logo from './ut.png';
+// import logo from './ut.png';
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
@@ -13,11 +13,11 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
     <div>
-        <ul className="nav nav-tabs bg-primary sticky-top">
-            <li className="nav-item">
+        <ul className="nav nav-tabs bg-secondary">
+            {/* <li className="nav-item">
                 <img src={logo} alt="United Tutorials" style={{height:'41px',width:'70px'}} />
 
-            </li>
+            </li> */}
             <li className="nav-item">
                 <Link className="nav-link" style={isActive(history, '/')} to="/">
                     Home
@@ -40,7 +40,7 @@ const Menu = ({ history }) => (
                 </li>
             }
 
-            {isAuthenticated() && isAuthenticated().user.role === 1 &&
+            {!isAuthenticated() &&
                 (<li>
                     <Link className="nav-link" style={isActive(history, '/signup')} to="/signup">
                         signup

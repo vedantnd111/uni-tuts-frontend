@@ -5,7 +5,7 @@ import '../style.css';
 function CardView({ topic }) {
 
     return (
-        <Link className="col-md-12 list-group-item"
+        <Link className="list-group-item"
             role="button"
             style={{ textDecoration: 'none', color: 'black' }}
             to={{ pathname: '/show/video', state: topic }}>

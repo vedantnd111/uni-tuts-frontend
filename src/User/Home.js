@@ -81,7 +81,7 @@ function Home() {
                                 {standards.map((standard, i) => (
                                     <CardAdmin key={i} standard={standard} URL2="standard" url="subject" />
                                 ))}
-                                <Link to="/standard/create" className="card" role="button" >
+                                <Link to="/standard/create" className="card m-4" role="button" >
                                     <div className="card-body">
                                         <i className="material-icons">add</i>
                                         <h1 style={{ color: 'black' }}>Add Standards</h1>

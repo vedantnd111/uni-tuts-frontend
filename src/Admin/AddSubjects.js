@@ -73,24 +73,44 @@ function AddSubjects() {
     // }
     const newSubjectForm = () => {
         return (
-            <form onSubmit={clickSubmit}>
-                <div className="form-group">
-                    <h6 className="text-muted">Select photo:</h6>
-                    <label className="btn btn-secondary">
-                        <input type="file" onChange={() => handleChange('photo')} name="photo" accept="image/*" />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label className="text-muted font-weight-bold">Enter Name:</label>
-                    <input className="form-control" value={name} type="text" onChange={() => handleChange('name')} name="name" />
-                </div>
-                <div className="form-group">
-                    <label className="text-muted font-weight-bold">Enter Description:</label>
-                    <input className="form-control" value={description} type="text" onChange={() => handleChange('description')} name="description" />
-                </div>
-                <button className="btn btn-outline-primary">Add Subject</button>
-            </form>
-        );
+            // <form onSubmit={clickSubmit}>
+            //     <div className="form-group">
+            //         <h6 className="text-muted">Select photo:</h6>
+            //         <label className="btn btn-secondary">
+            //             <input type="file" onChange={() => handleChange('photo')} name="photo" accept="image/*" />
+            //         </label>
+            //     </div>
+            //     <div className="form-group">
+            //         <label className="text-muted font-weight-bold">Enter Name:</label>
+            //         <input className="form-control" value={name} type="text" onChange={() => handleChange('name')} name="name" />
+            //     </div>
+            //     <div className="form-group">
+            //         <label className="text-muted font-weight-bold">Enter Description:</label>
+            //         <input className="form-control" value={description} type="text" onChange={() => handleChange('description')} name="description" />
+            //     </div>
+            //     <button className="btn btn-outline-primary">Add Subject</button>
+            // </form>
+            <form className="mb-3" onSubmit={clickSubmit}>
+            <div className="form-group">
+                <h6 className="text-muted"> Select photo</h6>
+                <label className="btn btn-secondary ">
+                    <input className="form-control bg-secondary text-white" style={{border:0}} type="file" onChange={handleChange('photo')} name="photo" accept="image/*" />
+                </label>
+            </div>
+            <div className="form-group">
+                <label className="text-muted font-weight-bold">Enter name:</label>
+                <input className="form-control" onChange={handleChange('name')} type="text" name="name" value={name} />
+            </div>
+            <div className="form-group">
+                <label className="text-muted font-weight-bold">Enter description:</label>
+                <textarea className="form-control" onChange={handleChange('description')} name="description" value={description} />
+            </div>
+            <button className="btn btn-outline-primary">Add subject</button>
+
+        </form>
+
+
+  );
     };
 
     return (

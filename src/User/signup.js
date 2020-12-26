@@ -4,7 +4,7 @@ import Layout from '../core/Layout';
 import { signUpFetch, isAuthenticated } from '../auth';
 import { fetchStandard } from './apiUser';
 import ShowError from '../helpers/ShowError';
-import ShowSuccess from '../helpers/ShowSuccess';
+import { Link } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -37,7 +37,7 @@ const Signup = () => {
 
     useEffect(() => {
         init();
-    });
+    },[]);
 
 
     const handleChange = name => event => {
@@ -47,12 +47,12 @@ const Signup = () => {
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false, });
-        signUpFetch({ name, email, password, standard }, user._id, token)
-            .then((data) => {
+        signUpFetch({ name, email, password, standard })
+            .then((response) => {
 
-                if (data.error) {
-                    console.log(data);
-                    setValues({ ...values, error: data.error, success: false });
+                if (response.error) {
+                    console.log(response);
+                    setValues({ ...values, error: response.error, success: false });
                 }
                 else {
                     setValues({
@@ -68,6 +68,11 @@ const Signup = () => {
 
             })
     };
+    function showSuccess(success) {
+        return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
+            <h3>Your accout has been created please <Link to="/signin">signin</Link></h3>
+        </div>
+    }
 
     const signupForm = () => (
         <form className="form-group">
@@ -83,7 +88,7 @@ const Signup = () => {
                 <label className="text-muted font-weight-bold">Enter password:</label>
                 <input type="password" value={password} onChange={handleChange('password')} className="form-control my-2 border-700" />
             </div>
-            <div className="form-group">
+            <div>
                 <label className="text-muted font-weight-bold">Select standard:</label>
                 <select className="form-control" onChange={handleChange('standard')} value={standard} >
                     <option>please select standard</option>
@@ -104,7 +109,7 @@ const Signup = () => {
     return (<div>
         <Layout title="Sign up" description="this is a signup page" className="container col-md-8 my-4 offset-md-2">
             <ShowError error={error} />
-            <ShowSuccess success={success} initial="new" msg="account" />
+            {showSuccess(success)}
             {signupForm()}
 
         </Layout>

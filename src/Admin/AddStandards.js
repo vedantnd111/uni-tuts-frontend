@@ -59,8 +59,8 @@ function AddStandards() {
             <form className="mb-3" onSubmit={clickSubmit}>
                 <div className="form-group">
                     <h6 className="text-muted"> Select photo</h6>
-                    <label className="btn btn-secondary">
-                        <input type="file" onChange={handleChange('photo')} name="photo" accept="image/*" />
+                    <label className="btn btn-secondary ">
+                        <input className="form-control bg-secondary text-white" style={{border:0}} type="file" onChange={handleChange('photo')} name="photo" accept="image/*" />
                     </label>
                 </div>
                 <div className="form-group">
@@ -79,7 +79,7 @@ function AddStandards() {
 
     };
     return (
-        <Layout title="Add new Standards!!" description={`Hi, ${user.name} you can add new Standards here!!`} className="container">
+        <Layout title="Add new Standards!!" description={`Hi, ${user.name} you can add new Standards here!!`} className="container-sm">
             <GoBack />
             <ShowLoading loading={loading} />
             <ShowSuccess success={success} msg={createdStandard} initial="Standard" />

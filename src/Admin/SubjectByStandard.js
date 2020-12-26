@@ -38,7 +38,7 @@ const SubjectByStandard = () => {
                 {subjects.map((subject, i) => (
                     <CardAdmin key={i} standard={subject} url="topic" URL2="subject" />
                 ))}
-                <Link to={`/subject2/create/${standardId}`} className="card" role="button" >
+                <Link to={`/subject2/create/${standardId}`} className="card m-4" role="button" >
                     <div className="card-body">
                         <i class="material-icons">add</i>
                         <h1 style={{ color: 'black' }}>Add subjects</h1>
