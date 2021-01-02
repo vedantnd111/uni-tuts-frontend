@@ -5,26 +5,24 @@ import '../style.css'
 
 function Card({ standard, URL2, url }) {
     return (
-        <div className="col-md-4 m-3">
-            <div className="card">
-                <h4 className="card-header">
-                    <br />
-                </h4>
-                <div className="card-body">
-                    <ShowImage item={standard} url={URL2} />
-                    <br />
-                    <h4>{URL2} : {standard.name}</h4>
-                    <p>
-                        {standard.description}
-                    </p>
-
-                </div>
-                <Link to={`${url}/${standard._id}`} role="button" className="btn btn-outline-primary m-4" >
-                    Go to {url}
-                </Link>
-            </div>
+    <div class="col-md-4">
+    <div class="card medium">
+            <ShowImage item={standard} url={URL2} />
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{standard.name}</span>
         </div>
-    )
+        <div class="card-action grey">
+            <Link to={`${url}/${standard._id}`} role="button" class="white-text" style={{ fontWeight: "500" }}>Go to {url}</Link>
+        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            <p>{standard.description}</p>
+        </div>
+    </div>
+</div>
+
+
+     );
 }
 
 export default Card

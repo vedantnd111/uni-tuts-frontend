@@ -1,36 +1,54 @@
 import React from 'react'
+// import { Fragment } from 'react';
 import ReactPlayer from "react-player";
-import Tabbar from '../core/Tabbar';
+// import Tabbar from '../core/Tabbar';
 // import GoBack from '../helpers/GoBack'
 import '../style.css';
 
 
-function VideoView(props) {
-    return (
-        <div className="container-fluid row">
-            <div className="col-md-9" style={{borderRight:"1px solid black"}}>
-                <div className="player-wrapper">
-                    <ReactPlayer
-                        url={props.location.state.url}
-                        className="react-player"
-                        width="100%"
-                        height="75%"
-                        controls
-                        muted
-                        config={{
-                            youtube: {
-                                playerVars: { showinfo: 1 }
-                            }
-                        }} />
-                </div>
-                <div>
-                    <Tabbar />
-                </div>
-            </div>
-                <div className="col-md-3">
-                    <h1>It includes topic of same subject and class</h1>
+// function VideoView(props) {
+//     return (
+//         <div className="container-fluid">
+//             <div className="player-wrapper">
+//                 <ReactPlayer
+//                     url={props.location.state.url}
+//                     className="react-player"
+//                     width="60%"
+//                     height="50%"
+//                     controls
+//                     muted
+//                     config={{
+//                         youtube: {
+//                             playerVars: { showinfo: 1 }
+//                         }
+//                     }} />
+//             </div>
+//             <div className="container-fluid">
+//                 <Tabbar />
+//             </div>
+//          </div>
+//     );
+// }
 
-                </div>
+const VideoView = props => {
+    return (
+
+        <div className="container h-60 w-50" style={{height:"200px"}}>
+
+            <div className="player-wrapper">
+                <ReactPlayer
+                    url={props.location.state.url}
+                    className="react-player"
+                    width="100%"
+                    height="100%"
+                    controls
+                    muted
+                    config={{
+                        youtube: {
+                            playerVars: { showinfo: 1 }
+                        }
+                    }} />
+            </div>
         </div>
     );
 }

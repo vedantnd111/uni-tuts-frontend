@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import Layout from '../core/Layout';
-// import { Link } from 'react-router-dom';
-import { signUpFetch, isAuthenticated } from '../auth';
+import { signUpFetch } from '../auth';
 import { fetchStandard } from './apiUser';
 import ShowError from '../helpers/ShowError';
 import { Link } from 'react-router-dom';
@@ -20,7 +19,6 @@ const Signup = () => {
     });
 
     const { name, email, password, error, success, standard, standards } = values;
-    const { user, token } = isAuthenticated();
 
     const init = () => {
         fetchStandard()

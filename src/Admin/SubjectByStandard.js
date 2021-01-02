@@ -4,6 +4,7 @@ import { isAuthenticated } from '../auth';
 import ShowError from '../helpers/ShowError';
 import { fetchSubjectsByStandard } from '../User/apiUser';
 import CardAdmin from './CardAdmin';
+import '../style.css';
 
 const SubjectByStandard = () => {
     const [subjects, setSubjects] = useState([]);
