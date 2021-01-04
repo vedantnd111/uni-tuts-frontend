@@ -13,58 +13,6 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
     <div>
-        {/* <ul className="nav nav-tabs bg-secondary">
-            <li className="nav-item">
-                <Link className="nav-link" style={isActive(history, '/')} to="/">
-                    Home
-                </Link>
-            </li>
-
-            {isAuthenticated() && isAuthenticated().user.role === 0 &&
-                <li>
-                    <Link className="nav-link" style={isActive(history, '/user/dashboard')} to="/user/dashboard">
-                        Dashboard
-            </Link>
-                </li>
-            }
-
-            {isAuthenticated() && isAuthenticated().user.role === 1 &&
-                <li>
-                    <Link className="nav-link" style={isActive(history, '/admin/dashboard')} to="/admin/dashboard">
-                        Dashboard
-            </Link>
-                </li>
-            }
-
-            {!isAuthenticated() &&
-                (<li>
-                    <Link className="nav-link" style={isActive(history, '/signup')} to="/signup">
-                        signup
-                </Link>
-                </li>
-                )}
-            {!isAuthenticated() && <li>
-                <Link className="nav-link" style={isActive(history, '/signin')} to="/signin">
-                    signin
-                </Link>
-            </li>
-            }
-            {isAuthenticated() && <li>
-                <span className="nav-link" style={{ cursor: 'pointer', color: '#ffffff' }} onClick={() => {
-                    signout(() => {
-                        history.push('/signin');
-                    })
-                }}>
-                    signout
-                </span>
-            </li>}
-
-
-
-
-        </ul>
-     */}
-
         <div className="navbar-fixed">
             <nav>
                 <div className="nav-wrapper blue-grey darken-3">
@@ -86,22 +34,22 @@ const Menu = ({ history }) => (
                     </ul>
                 </div>
             </nav>
-
-            <ul className="sidenav align-center" id="mobile-demo">
-                <li><Link to="/" className="nav-item">Home</Link></li>
-                <li><Link to="/aboutus" className="nav-item">About us</Link></li>
-                <li><Link to="/contactus" className="nav-item">Contact us</Link></li>
-                {!isAuthenticated() && (<li><Link to="/signin" className="waves-effect waves-light btn" style={{ textAlign: "center" }}><i className="material-icons left">login</i>login</Link></li>)}
-                {isAuthenticated() && (<li><Link className="waves-effect waves-light btn"onClick={() => {
-                                signout(() => {
-                                    history.push('/signin');
-                                })
-                            }} style={{ textAlign: "center" }}><i className="material-icons left">logout</i>logout</Link></li>)}
-                
-                {/* <Link className="waves-effect waves-light btn"><i className="material-icons left">login</i>Login</Link> */}
-            </ul>
-
         </div>
+
+        <ul className="sidenav align-center" id="mobile-demo">
+            <li><Link to="/" className="nav-item">Home</Link></li>
+            <li><Link to="/aboutus" className="nav-item">About us</Link></li>
+            <li><Link to="/contactus" className="nav-item">Contact us</Link></li>
+            {!isAuthenticated() && (<li><Link to="/signin" className="waves-effect waves-light btn" style={{ textAlign: "center" }}><i className="material-icons left">login</i>login</Link></li>)}
+            {isAuthenticated() && (<li><Link className="waves-effect waves-light btn" onClick={() => {
+                signout(() => {
+                    history.push('/signin');
+                })
+            }} style={{ textAlign: "center" }}><i className="material-icons left">logout</i>logout</Link></li>)}
+
+        </ul>
+
+
 
     </div>
 );

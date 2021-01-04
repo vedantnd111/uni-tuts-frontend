@@ -65,3 +65,18 @@ export const isAuthenticated = () => {
         return false;
     }
 }
+
+export const otpSend=(email)=>{
+    return fetch(`${API}/api/send`, {
+        method: "post",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(email)
+    })
+        .then(Response => { return Response.json(); })
+        .catch(err => {
+            console.log(err);
+        })
+}

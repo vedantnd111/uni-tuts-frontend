@@ -161,10 +161,12 @@
   table.highlight>tbody>tr:hover{
     background-color: rgba(238,110,115,0.6);
   }
-  input[type=search]:focus{
+  /* input[type=search]:focus{
     border-bottom: 1px solid #ee6e73 !important;
     box-shadow: 0 1px 0 0 #ee6e73 !important;
-  }
+  } */
+
+  
 
 @media only screen and (max-width:400px){
     .card-image{

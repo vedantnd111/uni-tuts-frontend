@@ -1,12 +1,26 @@
-import React, { useState,useEffect } from 'react';
-import Layout from '../core/Layout';
+import React, { useState, useEffect } from 'react';
 import { signUpFetch } from '../auth';
 import { fetchStandard } from './apiUser';
 import ShowError from '../helpers/ShowError';
 import { Link } from 'react-router-dom';
+import { isActive } from '../helpers/Active';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+// import TextField from '@material-ui/core/TextField';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+// import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import '../auth.css';
 
 
-const Signup = () => {
+const Signup = ({ history }) => {
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -35,7 +49,7 @@ const Signup = () => {
 
     useEffect(() => {
         init();
-    },[]);
+    }, []);
 
 
     const handleChange = name => event => {
@@ -46,13 +60,13 @@ const Signup = () => {
         event.preventDefault();
         setValues({ ...values, error: false, });
         signUpFetch({ name, email, password, standard })
-            .then((response) => {
-
-                if (response.error) {
-                    console.log(response);
-                    setValues({ ...values, error: response.error, success: false });
+            .then((data) => {
+                if (data.error) {
+                    // console.log("data.error ", data.error);
+                    setValues({ ...values, error: data.error, success: false });
                 }
                 else {
+                   
                     setValues({
                         name: '',
                         email: '',
@@ -62,56 +76,151 @@ const Signup = () => {
                         standards: [],
                         standard: ''
                     });
+                    console.log("its flushed");
                 }
 
             })
     };
     function showSuccess(success) {
-        return <div className="alert alert-info" style={{ display: success ? '' : 'none' }}>
-            <h3>Your accout has been created please <Link to="/signin">signin</Link></h3>
+        return <div className="alert alert-info mt-2" style={{ display: success ? '' : 'none' }}>
+            <h3 style={{ textAlign: "center" }}>A verification link has been sent to your email</h3>
         </div>
     }
 
-    const signupForm = () => (
-        <form className="form-group">
-            <div>
-                <label className="text-muted font-weight-bold">Enter name:</label>
-                <input type="text" value={name} onChange={handleChange("name")} className="form-control my-2 border-700" />
-            </div>
-            <div>
-                <label className="text-muted font-weight-bold">Enter email:</label>
-                <input type="email" value={email} onChange={handleChange("email")} className="form-control my-2 border-700" />
-            </div>
-            <div>
-                <label className="text-muted font-weight-bold">Enter password:</label>
-                <input type="password" value={password} onChange={handleChange('password')} className="form-control my-2 border-700" />
-            </div>
-            <div>
-                <label className="text-muted font-weight-bold">Select standard:</label>
-                <select className="form-control" onChange={handleChange('standard')} value={standard} >
-                    <option>please select standard</option>
+    const useStyles = makeStyles((theme) => ({
+        paper: {
+            marginTop: theme.spacing(8),
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
+        avatar: {
+            margin: theme.spacing(1),
+            backgroundColor: theme.palette.secondary.main,
+        },
+        form: {
+            width: '100%', // Fix IE 11 issue.
+            marginTop: theme.spacing(3),
+        },
+        submit: {
+            margin: theme.spacing(3, 0, 2),
+        },
+    }));
 
-                    {standards &&
-                        standards.map((c, i) => (
-                            <option key={i} value={c._id}>{c.name}</option>
-                        )
-                        )}
-                </select>
-            </div>
+    // export default function SignUp() {
+    const classes = useStyles();
 
-            <button className="btn btn-outline-primary my-2" onClick={clickSubmit}>Sign up</button>
+    return (
+        <div className="container-fluid">
 
-        </form>
-    )
-
-    return (<div>
-        <Layout title="Sign up" description="this is a signup page" className="container col-md-8 my-4 offset-md-2">
             <ShowError error={error} />
             {showSuccess(success)}
-            {signupForm()}
+            <Container component="main" maxWidth="xs" className="contain bg-white" style={{ borderRadius: "10px", paddingBottom: "5px" }}>
+                <CssBaseline />
+                <div className={classes.paper}>
+                    <div className="col-sm-8 d-flex align-items-center justify-content-center">
+                        <ul className="nav nav-tabs mb-1" id="pills-tab" role="tablist">
+                            <li className="nav-item"> <Link className="nav-link text-dark" style={isActive(history, "/signin")} id="pills-signin-tab" data-toggle="pill" to="/signin" role="tab" aria-controls="pills-signin" aria-selected="true">Sign In</Link> </li>
+                            <li className="nav-item"> <Link className="nav-link text-dark" style={isActive(history, "/signup")} id="pills-signup-tab" data-toggle="pill" to="/signup" role="tab" aria-controls="pills-signup" aria-selected="false">Sign Up</Link> </li>
+                        </ul>
+                    </div>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5" className="black-text" style={{ fontWeight: "700" }}>
+                        Sign up
+        </Typography>
+                    <form className={classes.form} noValidate>
+                        <div className="row bg-white textfield">
+                            <i className="material-icons signup-icon" style={{ padding: "9px" }}>account_circle</i>
+                            <input
+                                variant="outlined"
+                                margin="normal"
+                                className="col form-control"
+                                required
+                                fullWidth
+                                placeholder="Name"
+                                id="name"
+                                label="Name"
+                                name="name"
+                                autoComplete="name"
+                                onChange={handleChange("name")}
+                                autoFocus
+                            />
+                        </div>
+                        <div className="row bg-white textfield">
+                            <i className="material-icons" style={{ padding: "9px" }}>email</i>
+                            <input
+                                variant="outlined"
+                                margin="normal"
+                                className="col form-control"
+                                required
+                                fullWidth
+                                placeholder="Email"
+                                id="email"
+                                label="Email Address"
+                                onChange={handleChange("email")}
+                                name="email"
+                                autoComplete="email"
+                            />
+                        </div>
+                        <div className="row bg-white textfield">
+                            <i className="material-icons" style={{ padding: "9px" }}>vpn_key</i>
+                            <input name="password"
+                                label="Password"
+                                type="password"
+                                className="col form-control"
+                                placeholder="Password"
+                                id="password"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={handleChange("password")}
+                                required
+                                fullWidth
+                                autoComplete="current-password" />
+                        </div>
+                        <div className="row bg-white textfield">
+                            <i className="material-icons" style={{ padding: "9px" }}>class</i>
+                            <select className="col form-control" onChange={handleChange('standard')} value={standard} style={{ padding: "3px" }} >
+                                <option>please select standard</option>
 
-        </Layout>
-    </div>
+                                {standards &&
+                                    standards.map((c, i) => (
+                                        <option key={i} value={c._id}>{c.name}</option>
+                                    )
+                                    )}
+                            </select>
+                        </div>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={clickSubmit}
+                        >
+                            Sign Up
+          </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                {/* <Link href="#" variant="body2">
+                                    Forgot password?
+              </Link> */}
+                            </Grid>
+
+                            <Link to="/signin" className="white-text auth-btn" style={{ fontSize: "15px", margin: "4px" }}>
+                                Already have an account? Sign In
+                                </Link>
+                        </Grid>
+                    </form>
+                </div>
+                {/* <Box mt={8}>
+                    <Copyright />
+                </Box> */}
+            </Container>
+
+        </div>
     );
+
 }
 export default Signup;
