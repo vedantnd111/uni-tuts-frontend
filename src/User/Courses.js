@@ -26,7 +26,7 @@ function Courses({ error, standards, subjects }) {
     return (
         <div>
             {!isAuthenticated() && (
-                <div className="mb-4">
+                <div className="container mb-4">
                     <ShowError error={error} />
                     <div className="row">
                         {standards.map((standard, i) => (
@@ -37,7 +37,7 @@ function Courses({ error, standards, subjects }) {
             )}
             {isAuthenticated() && isAuthenticated().user.role === 0 &&
                 (
-                    <div className="mb-4">
+                    <div className="container mb-4">
                         <ShowError error={error} />
                         <div className="row">
                             {subjects.map((subject, i) => (
@@ -51,7 +51,7 @@ function Courses({ error, standards, subjects }) {
             }
             {isAuthenticated() && isAuthenticated().user.role === 1 &&
                 (
-                    <div className="mb-4">
+                    <div className="container mb-4">
                         <div className="row">
 
                             {standards.map((standard, i) => (

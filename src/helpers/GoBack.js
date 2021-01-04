@@ -7,12 +7,12 @@ function GoBack() {
     return (
         <Fragment>
             <button className="btn btn-primary btn-xl m-3"
-                style={{ fontSize: "1.5rem" }}
+            style={{fontSize:"1.5rem"}}
                 onClick={() => history.goBack()}>
-  <i class="fa fa-chevron-circle-left hvr-icon"></i>
+                <i class="material-icons large">keyboard_arrow_left</i>
   Back
                 {/* <i class="tiny material-icons mt-2 pr-2" style={{ fontSize: "30px" }}>arrow_back</i> */}
-                </button>
+            </button>
 
         </Fragment>
     )

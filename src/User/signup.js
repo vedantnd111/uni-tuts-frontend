@@ -3,7 +3,7 @@ import { signUpFetch } from '../auth';
 import { fetchStandard } from './apiUser';
 import ShowError from '../helpers/ShowError';
 import { Link } from 'react-router-dom';
-import { isActive } from '../helpers/Active';
+import SlideBar from '../components/SlideBar'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,7 +20,7 @@ import Container from '@material-ui/core/Container';
 import '../auth.css';
 
 
-const Signup = ({ history }) => {
+const Signup = ({history}) => {
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -66,7 +66,7 @@ const Signup = ({ history }) => {
                     setValues({ ...values, error: data.error, success: false });
                 }
                 else {
-                   
+
                     setValues({
                         name: '',
                         email: '',
@@ -82,8 +82,8 @@ const Signup = ({ history }) => {
             })
     };
     function showSuccess(success) {
-        return <div className="alert alert-info mt-2" style={{ display: success ? '' : 'none' }}>
-            <h3 style={{ textAlign: "center" }}>A verification link has been sent to your email</h3>
+        return <div className="container alert alert-info mt-2" style={{ display: success ? '' : 'none' }}>
+            <h5 style={{ textAlign: "center" }}>A verification link has been sent to your email</h5>
         </div>
     }
 
@@ -118,12 +118,7 @@ const Signup = ({ history }) => {
             <Container component="main" maxWidth="xs" className="contain bg-white" style={{ borderRadius: "10px", paddingBottom: "5px" }}>
                 <CssBaseline />
                 <div className={classes.paper}>
-                    <div className="col-sm-8 d-flex align-items-center justify-content-center">
-                        <ul className="nav nav-tabs mb-1" id="pills-tab" role="tablist">
-                            <li className="nav-item"> <Link className="nav-link text-dark" style={isActive(history, "/signin")} id="pills-signin-tab" data-toggle="pill" to="/signin" role="tab" aria-controls="pills-signin" aria-selected="true">Sign In</Link> </li>
-                            <li className="nav-item"> <Link className="nav-link text-dark" style={isActive(history, "/signup")} id="pills-signup-tab" data-toggle="pill" to="/signup" role="tab" aria-controls="pills-signup" aria-selected="false">Sign Up</Link> </li>
-                        </ul>
-                    </div>
+                    <SlideBar history={history} />
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
@@ -141,6 +136,7 @@ const Signup = ({ history }) => {
                                 fullWidth
                                 placeholder="Name"
                                 id="name"
+                                value={name}
                                 label="Name"
                                 name="name"
                                 autoComplete="name"
@@ -158,6 +154,7 @@ const Signup = ({ history }) => {
                                 fullWidth
                                 placeholder="Email"
                                 id="email"
+                                value={email}
                                 label="Email Address"
                                 onChange={handleChange("email")}
                                 name="email"
@@ -168,6 +165,7 @@ const Signup = ({ history }) => {
                             <i className="material-icons" style={{ padding: "9px" }}>vpn_key</i>
                             <input name="password"
                                 label="Password"
+                                value={password}
                                 type="password"
                                 className="col form-control"
                                 placeholder="Password"

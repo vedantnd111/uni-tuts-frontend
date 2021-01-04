@@ -25,6 +25,7 @@ function Home() {
     const loadSubjects = () => {
         fetchSubjectsByStandard(user.standard, user._id, token)
             .then(data => {
+                console.log(data.error);
                 if (data.error) {
                     setError(data.error);
                 }
@@ -46,7 +47,7 @@ function Home() {
     return (
         <div>
             <div class="parallax-container">
-                <div class="parallax"><img className="book-img" alt="book" src={book1} /></div>
+                <div class="parallax"><img className="book-img responsive-img" alt="book" src={book1}/></div>
                 <div className="text-on-img1">
                     <h1 className="header first1">Learning course online</h1>
                     <Link class="waves-effect waves-light btn-large" to={{ pathname: "/courses", error: error, standards: standards, subjects: subjects }}><i class="material-icons right">arrow_forward</i>Go to Courses</Link>
@@ -62,7 +63,7 @@ function Home() {
             </div>
 
             <div class="parallax-container">
-                <div class="parallax"><img alt="book" src={book1} /></div>
+                <div class="parallax"><img className="book-img responsive-img" alt="book" src={book1} /></div>
             </div>
             <div class="section white container">
                 <div class="row container">

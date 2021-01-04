@@ -1,7 +1,6 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { signInFetch, authenticate, isAuthenticated } from '../auth';
-import { isActive } from '../helpers/Active';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,11 +9,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import Paper from 'material-ui/core/Paper';
+import ShowError from '../helpers/ShowError';
 import '../auth.css';
-import book1 from '../core/book1.jpg';
+import SlideBar from '../components/SlideBar';
+// import book1 from '../core/book1.jpg';
 
-const SignIn = ({ history }) => {
+const SignIn = ({history}) => {
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -51,8 +51,8 @@ const SignIn = ({ history }) => {
             })
     };
 
-    const showLoading = () => loading && <div className="alert alert-danger">
-        <h2>loading...</h2>
+    const showLoading = () => loading && <div className="container mt-2 alert alert-warning">
+        <h6 style={{ textAlign: "center", fontWeight: "700" }}>loading...</h6>
     </div>;
 
 
@@ -64,13 +64,6 @@ const SignIn = ({ history }) => {
             return <Redirect to="/" />
         }
     };
-
-    const showError = () => {
-        return <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
-            <h5> {error}</h5>
-        </div>
-    };
-
     const useStyles = makeStyles((theme) => ({
         paper: {
             marginTop: theme.spacing(8),
@@ -102,19 +95,13 @@ const SignIn = ({ history }) => {
     return (
         // <div className="jumbotron" style={{backgroundImage:`url(${book1})`,width:"100%",height:"100%"}}>
         <div>
-
+            <ShowError error={error} />
+            {showLoading(loading)}
+            {redirectUser()}
             <Container component="main" maxWidth="xs" className="bg-white" >
                 <CssBaseline />
                 <div className={classes.paper}>
-                    {showError(error)}
-                    {showLoading(loading)}
-                    {redirectUser()}
-                    <div class="col-sm-8 d-flex align-items-center justify-content-center" style={{ border: "2px" }}>
-                    <ul class="nav nav-tabs mb-1" id="pills-tab" role="tablist">
-                        <li class="nav-item"> <Link className="nav-link text-dark" style={isActive(history, "/signin")} id="pills-signin-tab" data-toggle="pill" to="/signin" role="tab" aria-controls="pills-signin" aria-selected="true">Sign In</Link> </li>
-                        <li class="nav-item"> <Link className="nav-link text-dark" style={isActive(history, "/signup")} id="pills-signup-tab" data-toggle="pill" to="/signup" role="tab" aria-controls="pills-signup" aria-selected="false">Sign Up</Link> </li>
-                    </ul>
-                    </div>
+                    <SlideBar history={history} />
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
