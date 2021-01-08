@@ -7,7 +7,7 @@ import { isAuthenticated } from '../auth';
 function Card({ standard, url,URL }) {
     return (
         <div className="col-md-4">
-        <Link className="card medium" to={!isAuthenticated() ? "/signin" : `/subject/topic/${standard._id}`} style={{textDecoration:"none"}}>
+        <Link className="card medium" to={`/${URL}/${standard._id}`} style={{textDecoration:"none"}}>
              <ShowImage item={standard} url={url} />
             <div className="card-content">
                 <span className="card-title activator grey-text text-darken-4">{standard.name}</span>

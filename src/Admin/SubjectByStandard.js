@@ -5,6 +5,8 @@ import ShowError from '../helpers/ShowError';
 import { fetchSubjectsByStandard } from '../User/apiUser';
 import CardAdmin from './CardAdmin';
 import '../style.css';
+import Card from '../User/Card';
+import ShowImage from '../User/ShowImage'
 
 const SubjectByStandard = () => {
     const [subjects, setSubjects] = useState([]);
@@ -15,7 +17,7 @@ const SubjectByStandard = () => {
 
     const loadSubjects = () => {
 
-        fetchSubjectsByStandard(standardId, user._id, token)
+        fetchSubjectsByStandard(standardId)
             .then((data) => {
                 if (data.error) {
                     setError(data.error);
@@ -32,19 +34,20 @@ const SubjectByStandard = () => {
     });
 
     return (
-        <div className="mb-4">
+        <div className="container mt-4">
             <div className="row">
                 <ShowError error={error} />
 
                 {subjects.map((subject, i) => (
-                    <CardAdmin key={i} standard={subject} url="topic" URL2="subject" />
+                    <Card key={i} standard={subject} url="subject" URL="topic" />
                 ))}
-                <Link to={`/subject2/create/${standardId}`} className="card m-4" role="button" >
+                {isAuthenticated() && isAuthenticated().user.role === 1 && (<Link to={`/subject2/create/${standardId}`} className="card m-4" role="button" >
                     <div className="card-body">
                         <i class="material-icons">add</i>
                         <h1 style={{ color: 'black' }}>Add subjects</h1>
                     </div>
-                </Link>
+                </Link>)}
+
             </div>
         </div>
     )

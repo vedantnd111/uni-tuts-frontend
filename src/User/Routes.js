@@ -28,7 +28,7 @@ const Routes = () => (
             <PrivateRoutes path='/user/dashboard' exact component={UserDashboard} />
             <AdminRoutes path='/admin/dashboard' exact component={AdminDashboard} />
             <Route path='/subject/:standardId' exact component={subjectByStandard} />
-            <Route path='/subject/topic/:subjectId' exact component={TopicsBySubject} />
+            <Route path='/topic/:subjectId' exact component={TopicsBySubject} />
             <Route path="/standard/create" exact component={AddStandards} />
             <Route path="/subject2/create/:standardId" exact component={AddSubjects} />
             <Route path="/topic/create/:subjectId" exact component={AddTopics} />

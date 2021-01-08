@@ -8,23 +8,17 @@ export const fetchStandard = () => {
         .catch(err => console.log(err));
 };
 
-export const fetchSubjectsByStandard = (standardId, userId, token) => {
-    return fetch(`${API}/api/subject/${standardId}/${userId}`, {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+export const fetchSubjectsByStandard = (standardId) => {
+    return fetch(`${API}/api/subject/${standardId}`, {
+        method: 'GET'
     })
         .then(response => response.json())
         .catch(err => console.log(err))
 };
 
-export const fetchTopicsBySubject = (subjectId, userId, token) => {
-    return fetch(`${API}/api/topic/${subjectId}/${userId}`, {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+export const fetchTopicsBySubject = (subjectId) => {
+    return fetch(`${API}/api/topic/${subjectId}`, {
+        method: 'GET'
     })
         .then(response => response.json())
         .catch(err => console.log(err))

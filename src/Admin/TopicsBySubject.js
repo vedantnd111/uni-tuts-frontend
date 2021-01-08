@@ -9,12 +9,12 @@ function TopicsBySubject() {
     const [topics, setTopics] = useState([]);
     const [error, setError] = useState(false);
     const history = new useHistory();
-    const subjectId = history.location.pathname.split('/')[3];
+    const subjectId = history.location.pathname.split('/')[2];
     const { user, token } = isAuthenticated();
 
     const loadTopics = () => {
 
-        fetchTopicsBySubject(subjectId, user._id, token)
+        fetchTopicsBySubject(subjectId)
             .then((data) => {
                 if (data.error) {
                     setError(data.error);
@@ -37,9 +37,9 @@ function TopicsBySubject() {
             <div className="card m-4">
                 <ul className="list-group list-group-flush" >
                     {topics.map((topic, i) => (
-                    <CardView key={i} topic={topic} />
+                        <CardView key={i} topic={topic} />
                     ))}
-                    <li className="list-group-item">
+                    {isAuthenticated() && isAuthenticated().user.role === 1 && (<li className="list-group-item">
                         <Link to={`/topic/create/${subjectId}`}
                             role="button"
                             style={{ textDecoration: 'none', color: 'black' }}
@@ -47,7 +47,8 @@ function TopicsBySubject() {
                             {/* <i class="material-icons">add</i> */}
                             <h1 style={{ color: 'black' }}>Add Topics</h1>
                         </Link>
-                    </li>
+                    </li>)}
+
                 </ul>
             </div>
         </div>
