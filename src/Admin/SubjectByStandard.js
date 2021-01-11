@@ -3,17 +3,17 @@ import { useHistory, Link } from 'react-router-dom';
 import { isAuthenticated } from '../auth';
 import ShowError from '../helpers/ShowError';
 import { fetchSubjectsByStandard } from '../User/apiUser';
-import CardAdmin from './CardAdmin';
+// import CardAdmin from './CardAdmin';
 import '../style.css';
 import Card from '../User/Card';
-import ShowImage from '../User/ShowImage'
+// import ShowImage from '../User/ShowImage'
 
 const SubjectByStandard = () => {
     const [subjects, setSubjects] = useState([]);
     const [error, setError] = useState(false);
     const history = new useHistory();
     const standardId = history.location.pathname.split('/')[2];
-    const { user, token } = isAuthenticated();
+    // const { user, token } = isAuthenticated();
 
     const loadSubjects = () => {
 

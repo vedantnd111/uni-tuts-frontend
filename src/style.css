@@ -5,30 +5,34 @@
 }
 
 /* for react player */
- .player-wrapper {
+.player-wrapper {
     position: relative;
-    padding-top: 61.25%;
-    border: 1px solid black;
-    /* background-color: rgba(0, 0, 0, 0.76); */
-  }
-  .player{
-      height: 200px;
-  }
-  
-  .react-player {
+    padding-top: 53.25%;
+    /* height: 50%; */
+    /* border: 1px solid black;
+    background-color: black; */
+}
 
+/* .player{
+      height: 200px;
+  } */
+
+/* .react-player css makes react player responsive */
+
+.react-player {
     position: absolute;
     top: 0;
     left: 0;
-    
-  } 
-  .tabbar{
-      position: relative;
-      top: 0;
-      left: 0;
-  }
-  
-  
+
+}
+
+.tabbar {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+
 /* 
 .list-group-item:hover {
     background-color: red;
@@ -65,27 +69,27 @@
     }
 }
 
-.nav-item{
+.nav-item {
     font-weight: 500;
     font-size: 20px;
 }
 
-.nav-item:hover{
+.nav-item:hover {
     color: orange;
     background-color: rgba(24, 108, 122, 0.575);
     text-decoration: none;
 }
 
-.parallax-container{
+.parallax-container {
     opacity: 0.75;
 }
 
-.book-img{
-  height: auto;
-  width: auto;
+.book-img {
+    height: auto;
+    width: auto;
 }
 
-.text-on-img1{
+.text-on-img1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -93,89 +97,128 @@
     /* text-align: center; */
 
 }
-.section-heading,.instrctors{
+
+.section-heading,
+.instrctors {
     font-weight: bold;
     text-align: center;
 }
-.first1{
+
+.first1 {
     color: white;
     text-align: center;
     font-weight: bold;
 }
-.text-on-img2{
+
+.text-on-img2 {
     color: black;
 }
 
-.card{
+.card {
     border-radius: 4px;
     background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-  /* padding: 14px 80px 18px 36px; */
-  cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05); 
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+     /* padding: 14px 80px 18px 36px; */
+    cursor: pointer;
 }
 
-.card img{
+.card img {
     position: absolute;
-    padding: 0px 20px;
+    padding: 5px 20px;
     top: 20px;
     right: 15px;
     /* max-height: 120px; */
     height: 100%;
     width: 70%;
     /* height: ; */
-  }
-  .card .card-title {
+}
+
+.card .card-title {
     font-size: 24px;
     font-weight: 700;
 }
 
-   .card-image{
-      height: 100%;
+.card-image {
+    height: 100%;
 
-  } 
+}
 
-  /* .card-image:hover{
+/* .card-image:hover{
     -webkit-transform: scale(1.08);
   transform: scale(1.08);
   } */
 
- .card:hover{
-     transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-} 
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
 
-.card-reveal{
+.App{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.list-group-item {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.responsive-img{
+    max-height: 20%;
+}
+
+.card-reveal {
     color: #ffffff;
-    background-color: rgba(0,0,0,0.7) !important;
-  }
-  div.card-reveal span.card-title{
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+div.card-reveal span.card-title {
     color: #ffffff !important;
-  }
-  .tabs{
+}
+
+.badge {
+    float: right;
+}
+
+.badge:hover {
+    background-color: orange;
+}
+
+
+.tabs {
     background-color: transparent;
-  }
-  td, th{
+}
+
+td,
+th {
     padding: 5px 5px !important;
-  }
-  table.highlight>tbody>tr:hover{
-    background-color: rgba(238,110,115,0.6);
-  }
-  /* input[type=search]:focus{
+}
+
+table.highlight>tbody>tr:hover {
+    background-color: rgba(238, 110, 115, 0.6);
+}
+
+/* input[type=search]:focus{
     border-bottom: 1px solid #ee6e73 !important;
     box-shadow: 0 1px 0 0 #ee6e73 !important;
   } */
 
-  
 
-@media only screen and (max-width:400px){
-    .card-image{
+
+@media only screen and (max-width:400px) {
+    .card-image {
         height: 70%;
     }
-    .materialBox{
+
+    .materialBox {
         height: 100%;
     }
-    .card{
+
+    .card {
         width: 100%;
     }
 }

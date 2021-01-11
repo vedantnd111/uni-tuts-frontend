@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ShowImage from '../User/ShowImage'
 import '../style.css'
-import {isAuthenticated} from "../auth";
+// import {isAuthenticated} from "../auth";
 
 function Card({ standard, URL2, url }) {
     return (

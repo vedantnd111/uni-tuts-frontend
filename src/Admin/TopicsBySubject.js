@@ -5,12 +5,15 @@ import { isAuthenticated } from '../auth';
 import CardView from './CardView';
 import ShowError from '../helpers/ShowError';
 
-function TopicsBySubject() {
+function TopicsBySubject({subject=null}) {
     const [topics, setTopics] = useState([]);
     const [error, setError] = useState(false);
     const history = new useHistory();
-    const subjectId = history.location.pathname.split('/')[2];
-    const { user, token } = isAuthenticated();
+    let isPic= subject===null?true:false;
+    // console.log("subject: ",subject);
+    let subjectId =subject === null ?history.location.pathname.split('/')[2]:subject;
+    // subjectId=subject;
+    // const { user, token } = isAuthenticated();
 
     const loadTopics = () => {
 
@@ -32,12 +35,15 @@ function TopicsBySubject() {
     });
 
     return (
-        <div className="container">
+        <div className={subject===null? "container":""}>
             <ShowError error={error} />
-            <div className="card m-4">
-                <ul className="list-group list-group-flush" >
+            <div className="card1">
+                <ul className="list-group" >
+                    <li className="list-group-item mb-2" style={{backgroundColor:"skyblue",border:"2px solid black"}}>
+                        <div className="" style={{fontWeight:"bolder",fontSize:"25px"}}>Course Content</div>
+                    </li>
                     {topics.map((topic, i) => (
-                        <CardView key={i} topic={topic} />
+                        <CardView key={i} topic={topic} isPic={isPic} />
                     ))}
                     {isAuthenticated() && isAuthenticated().user.role === 1 && (<li className="list-group-item">
                         <Link to={`/topic/create/${subjectId}`}

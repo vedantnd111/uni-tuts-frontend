@@ -2,7 +2,7 @@ import React from 'react'
 import { isAuthenticated } from '../auth';
 import ShowError from '../helpers/ShowError';
 import Card from './Card';
-import CardAdmin from '../Admin/CardAdmin';
+// import CardAdmin from '../Admin/CardAdmin';
 import { Link } from 'react-router-dom';
 
 function Courses({ error, standards, subjects }) {
@@ -41,7 +41,7 @@ function Courses({ error, standards, subjects }) {
                         <ShowError error={error} />
                         <div className="row">
                             {subjects.map((subject, i) => (
-                                <Card key={i} standard={subject} url="subject" URL="topics" />
+                                <Card key={i} standard={subject} url="subject" URL="topic" />
                             ))}
 
                         </div>
@@ -55,7 +55,7 @@ function Courses({ error, standards, subjects }) {
                         <div className="row">
 
                             {standards.map((standard, i) => (
-                                <CardAdmin key={i} standard={standard} URL2="standard" url="subject" />
+                                <Card key={i} standard={standard} url="standard" URL="subject" />
                             ))}
                             <Link to="/standard/create" className="card m-4" role="button" >
                                 <div className="card-body">
