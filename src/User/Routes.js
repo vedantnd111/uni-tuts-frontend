@@ -16,6 +16,7 @@ import TopicsBySubject from '../Admin/TopicsBySubject';
 import  AddTopics  from '../Admin/AddTopics';
 import VideoView from './VideoView';
 import Courses from './Courses';
+import Overview from '../components/Overview';
 
 const Routes = () => (
     <BrowserRouter>
@@ -34,6 +35,7 @@ const Routes = () => (
             <Route path="/topic/create/:subjectId" exact component={AddTopics} />
             <Route path="/show/video" exact component={VideoView} />
             <Route path="/courses" exact component={Courses} />
+            <Route path="/overview" exact component={Overview} />
         </Switch>
     </BrowserRouter>
 );
