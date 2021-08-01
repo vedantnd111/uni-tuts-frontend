@@ -13,10 +13,11 @@ import subjectByStandard from '../Admin/SubjectByStandard';
 import AddStandards from '../Admin/AddStandards';
 import AddSubjects from '../Admin/AddSubjects';
 import TopicsBySubject from '../Admin/TopicsBySubject';
-import  AddTopics  from '../Admin/AddTopics';
+import AddTopics from '../Admin/AddTopics';
 import VideoView from './VideoView';
 import Courses from './Courses';
 import Overview from '../components/Overview';
+// import Footer from '../helpers/Footer';
 
 const Routes = () => (
     <BrowserRouter>
@@ -37,6 +38,7 @@ const Routes = () => (
             <Route path="/courses" exact component={Courses} />
             <Route path="/overview" exact component={Overview} />
         </Switch>
+        {/* <Footer /> */}
     </BrowserRouter>
 );
 

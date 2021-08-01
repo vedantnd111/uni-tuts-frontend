@@ -14,7 +14,7 @@ import '../auth.css';
 import SlideBar from '../components/SlideBar';
 // import book1 from '../core/book1.jpg';
 
-const SignIn = ({history}) => {
+const SignIn = ({ history }) => {
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -35,7 +35,7 @@ const SignIn = ({history}) => {
         setValues({ ...values, error: false, loading: true });
         signInFetch({ email, password })
             .then((data) => {
-                // console.log(`data ${data} and data.error ${data.error}`);
+                console.log(`data ${data} and data.error ${data.error}`);
                 if (data.error || data.error === null) {
                     setValues({ ...values, error: data.error, loading: false });
                 }
@@ -108,7 +108,7 @@ const SignIn = ({history}) => {
 
                     <Typography component="h1" variant="h5" className="black-text" style={{ fontWeight: "700" }}>
                         Sign In
-    </Typography>
+                    </Typography>
                     <form className={classes.form} noValidate>
                         <div className="row bg-white textfield">
                             <i className="material-icons" style={{ padding: "9px" }}>email</i>
@@ -151,7 +151,7 @@ const SignIn = ({history}) => {
                             onClick={clickSubmit}
                         >
                             Sign In
-      </Button>
+                        </Button>
                         <Grid container>
                             <Grid item xs>
                                 {/* <Link href="#" variant="body2">

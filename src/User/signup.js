@@ -20,7 +20,7 @@ import Container from '@material-ui/core/Container';
 import '../auth.css';
 
 
-const Signup = ({history}) => {
+const Signup = ({ history }) => {
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -34,22 +34,34 @@ const Signup = ({history}) => {
 
     const { name, email, password, error, success, standard, standards } = values;
 
-    const init = () => {
-        fetchStandard()
-            .then(data => {
-                if (data.error) {
-                    setValues({ ...values, error: data.error })
-                }
-                else {
-                    setValues({ ...values, standards: data });
-                }
-            })
-            .catch()
-    };
+    // const init = () => {
+    //     fetchStandard()
+    //         .then(data => {
+    //             if (data.error) {
+    //                 setValues({ ...values, error: data.error })
+    //             }
+    //             else {
+    //                 setValues({ ...values, standards: data });
+    //             }
+    //         })
+    //         .catch()
+    // };
 
     useEffect(() => {
+        const init = () => {
+            fetchStandard()
+                .then(data => {
+                    if (data.error) {
+                        setValues({ ...values, error: data.error })
+                    }
+                    else {
+                        setValues({ ...values, standards: data });
+                    }
+                })
+                .catch()
+        };
         init();
-    }, []);
+    });
 
 
     const handleChange = name => event => {
@@ -124,7 +136,7 @@ const Signup = ({history}) => {
                     </Avatar>
                     <Typography component="h1" variant="h5" className="black-text" style={{ fontWeight: "700" }}>
                         Sign up
-        </Typography>
+                    </Typography>
                     <form className={classes.form} noValidate>
                         <div className="row bg-white textfield">
                             <i className="material-icons signup-icon" style={{ padding: "9px" }}>account_circle</i>
@@ -198,7 +210,7 @@ const Signup = ({history}) => {
                             onClick={clickSubmit}
                         >
                             Sign Up
-          </Button>
+                        </Button>
                         <Grid container>
                             <Grid item xs>
                                 {/* <Link href="#" variant="body2">
@@ -208,7 +220,7 @@ const Signup = ({history}) => {
 
                             <Link to="/signin" className="white-text auth-btn" style={{ fontSize: "15px", margin: "4px" }}>
                                 Already have an account? Sign In
-                                </Link>
+                            </Link>
                         </Grid>
                     </form>
                 </div>

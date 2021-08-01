@@ -10,8 +10,8 @@ export class TabBar extends Component {
                         this.props.tabs.map(tab => {
                             const active = (tab === this.props.selected ? 'active ' : '');
                             return (
-                                <li className="nav-item" key={tab} style={{width:"15%"}}>
-                                    <a className={"nav-link " + active} onClick={() => this.props.setSelected(tab)}>
+                                <li className="nav-item" key={tab} style={{ width: "15%" }}>
+                                    <a href="//#endregion" className={"nav-link " + active} onClick={() => this.props.setSelected(tab)}>
                                         {tab}
                                     </a>
                                 </li>
@@ -19,7 +19,7 @@ export class TabBar extends Component {
                         })
                     }
                 </ul>
-                { this.props.children}
+                {this.props.children}
             </div>
         )
     }

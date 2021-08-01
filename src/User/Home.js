@@ -11,17 +11,17 @@ function Home() {
     const [error, setError] = useState(false);
     const [subjects, setSubjects] = useState([]);
 
-    const loadStandards = () => {
-        fetchStandard()
-            .then(data => {
-                if (data.error) {
-                    setError(data.error);
-                }
-                else {
-                    setStandards(data);
-                }
-            })
-    };
+    // const loadStandards = () => {
+    //     fetchStandard()
+    //         .then(data => {
+    //             if (data.error) {
+    //                 setError(data.error);
+    //             }
+    //             else {
+    //                 setStandards(data);
+    //             }
+    //         })
+    // };
     const loadSubjects = () => {
         fetchSubjectsByStandard(user.standard, user._id, token)
             .then(data => {
@@ -37,6 +37,17 @@ function Home() {
     };
 
     useEffect(() => {
+        const loadStandards = () => {
+            fetchStandard()
+                .then(data => {
+                    if (data.error) {
+                        setError(data.error);
+                    }
+                    else {
+                        setStandards(data);
+                    }
+                })
+        };
         loadStandards();
         if (isAuthenticated() && isAuthenticated().user.role === 0) {
 
@@ -47,7 +58,7 @@ function Home() {
     return (
         <div>
             <div class="parallax-container">
-                <div class="parallax"><img className="book-img responsive-img" alt="book" src={book1}/></div>
+                <div class="parallax"><img className="book-img responsive-img" alt="book" src={book1} /></div>
                 <div className="text-on-img1">
                     <h1 className="header first1">Learning course online</h1>
                     <Link class="waves-effect waves-light btn-large" to={{ pathname: "/courses", error: error, standards: standards, subjects: subjects }}><i class="material-icons right">arrow_forward</i>Go to Courses</Link>
