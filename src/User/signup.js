@@ -34,7 +34,8 @@ const Signup = ({ history }) => {
 
     const { name, email, password, error, success, standard, standards } = values;
 
-    // const init = () => {
+
+    // const init = useCallback(() => {
     //     fetchStandard()
     //         .then(data => {
     //             if (data.error) {
@@ -45,23 +46,23 @@ const Signup = ({ history }) => {
     //             }
     //         })
     //         .catch()
-    // };
+    // }, []);
 
     useEffect(() => {
-        const init = () => {
-            fetchStandard()
-                .then(data => {
-                    if (data.error) {
-                        setValues({ ...values, error: data.error })
-                    }
-                    else {
-                        setValues({ ...values, standards: data });
-                    }
-                })
-                .catch()
-        };
-        init();
-    });
+        // const init = () => {
+        fetchStandard()
+            .then(data => {
+                if (data.error) {
+                    setValues(values => ({ ...values, error: data.error }))
+                }
+                else {
+                    setValues(values => ({ ...values, standards: data }));
+                }
+            })
+            .catch()
+        // };
+        // init();
+    }, []);
 
 
     const handleChange = name => event => {

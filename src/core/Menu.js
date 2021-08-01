@@ -20,7 +20,7 @@ const Menu = ({ history }) => (
                     <Link to="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
                     <ul className="right hide-on-med-and-down">
                         <li><Link style={isActive(history, '/')} to="/" className="nav-item">Home</Link></li>
-                        <li><Link to="/aboutus" style={isActive(history, '/aboutus')} className="nav-item">About us</Link></li>
+                        {/* <li><Link to="/aboutus" style={isActive(history, '/aboutus')} className="nav-item">About us</Link></li> */}
                         {/* <li><Link to="/" className="nav-item">Shop</Link></li> */}
                         <li><Link to="/contactus" style={isActive(history, '/contactus')} className="nav-item">Contact us</Link></li>
                         {!isAuthenticated() && (<Link className="waves-effect waves-light btn" to="/signin"><i className="material-icons left">login</i>Log in</Link>)}

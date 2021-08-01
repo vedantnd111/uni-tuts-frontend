@@ -17,6 +17,7 @@ import AddTopics from '../Admin/AddTopics';
 import VideoView from './VideoView';
 import Courses from './Courses';
 import Overview from '../components/Overview';
+import Contactus from './Contactus';
 // import Footer from '../helpers/Footer';
 
 const Routes = () => (
@@ -37,6 +38,7 @@ const Routes = () => (
             <Route path="/show/video" exact component={VideoView} />
             <Route path="/courses" exact component={Courses} />
             <Route path="/overview" exact component={Overview} />
+            <Route path="/contactus" exact component={Contactus} />
         </Switch>
         {/* <Footer /> */}
     </BrowserRouter>

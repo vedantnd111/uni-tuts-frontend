@@ -22,19 +22,19 @@ function Home() {
     //             }
     //         })
     // };
-    const loadSubjects = () => {
-        fetchSubjectsByStandard(user.standard, user._id, token)
-            .then(data => {
-                console.log(data.error);
-                if (data.error) {
-                    setError(data.error);
-                }
-                else {
-                    setSubjects(data);
-                }
-            })
+    // const loadSubjects = () => {
+    //     fetchSubjectsByStandard(user.standard, user._id, token)
+    //         .then(data => {
+    //             console.log(data.error);
+    //             if (data.error) {
+    //                 setError(data.error);
+    //             }
+    //             else {
+    //                 setSubjects(data);
+    //             }
+    //         })
 
-    };
+    // };
 
     useEffect(() => {
         const loadStandards = () => {
@@ -51,9 +51,20 @@ function Home() {
         loadStandards();
         if (isAuthenticated() && isAuthenticated().user.role === 0) {
 
-            loadSubjects();
+            // loadSubjects();
+            fetchSubjectsByStandard(user.standard, user._id, token)
+                .then(data => {
+                    console.log(data.error);
+                    if (data.error) {
+                        setError(data.error);
+                    }
+                    else {
+                        setSubjects(data);
+                    }
+                })
+
         }
-    });
+    }, [user,token]);
 
     return (
         <div>

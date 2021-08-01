@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import "../style.css"
 
 export class TabBar extends Component {
@@ -11,7 +12,7 @@ export class TabBar extends Component {
                             const active = (tab === this.props.selected ? 'active ' : '');
                             return (
                                 <li className="nav-item" key={tab} style={{ width: "15%" }}>
-                                    <a href="//#endregion" className={"nav-link " + active} onClick={() => this.props.setSelected(tab)}>
+                                    <a className={"nav-link " + active} onClick={() => this.props.setSelected(tab)}>
                                         {tab}
                                     </a>
                                 </li>

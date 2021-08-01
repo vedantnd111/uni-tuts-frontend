@@ -5,7 +5,7 @@ import TopicsBySubject from '../Admin/TopicsBySubject';
 // import Tabbar from '../core/Tabbar';
 // import GoBack from '../helpers/GoBack'
 import '../style.css';
-import App2 from '../components/App2';
+// import App2 from '../components/App2';
 
 const VideoView = props => {
     console.log(props.location.state.url.split("/")[3]);
@@ -35,7 +35,7 @@ const VideoView = props => {
                 <TopicsBySubject subject={props.location.state.subject} />
             </div>
             <div className="col-md-9">
-                <App2 />
+                {/* <App2 /> */}
             </div>
         </div>
 
