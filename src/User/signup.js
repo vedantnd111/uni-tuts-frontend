@@ -95,7 +95,7 @@ const Signup = ({ history }) => {
     };
     function showSuccess(success) {
         return <div className="container alert alert-info mt-2" style={{ display: success ? '' : 'none' }}>
-            <h5 style={{ textAlign: "center" }}>A verification link has been sent to your email</h5>
+            <h5 style={{ textAlign: "center" }}>Your accout has been succesfully created plese <Link to="/signin">Login</Link></h5>
         </div>
     }
 
