@@ -26,16 +26,18 @@ function UserDashboard() {
 
     const UserInfo = () => {
         return (
-            <div className="card mb-5">
-                <h2 className="card-header">
-                    User information
-                </h2>
-                <ul className="list-group">
-                    <li className="list-group-item">{name}</li>
-                    <li className="list-group-item">{email}</li>
-                    <li className="list-group-item">{role === 1 ? "Admin" : "Registered User"}</li>
-                </ul>
+            <div className="mx-4">
+                <div className="card mb-5">
+                    <h2 className="card-header">
+                        User information
+                    </h2>
+                    <ul className="list-group">
+                        <li className="list-group-item">Name: {name}</li>
+                        <li className="list-group-item">Email: {email}</li>
+                        <li className="list-group-item">role: {role === 1 ? "Admin" : "Registered User"}</li>
+                    </ul>
 
+                </div>
             </div>
         );
 

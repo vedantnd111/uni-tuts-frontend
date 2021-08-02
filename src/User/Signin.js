@@ -159,7 +159,7 @@ const SignIn = ({ history }) => {
           </Link> */}
                             </Grid>
 
-                            <Link to="/signup" className="white-text auth-btn" style={{ fontSize: "15px", margin: "4px" }}>
+                            <Link to="/signup" className="auth-btn" style={{ fontSize: "15px", margin: "4px" }}>
                                 Don't have an account? Sign Up
                             </Link>
                         </Grid>

@@ -14,12 +14,12 @@ function AdminDashboard() {
                 </h2>
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <Link to="/create/standard">
+                        <Link className="nav-link" to="/create/standard">
                             Create Standard
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to="/create/topic">
+                        <Link className="nav-link" to="/create/topic">
                             Create Topic
                         </Link>
                     </li>
@@ -31,16 +31,18 @@ function AdminDashboard() {
 
     const AdminInfo = () => {
         return (
-            <div className="card mb-5">
-                <h2 className="card-header">
-                    Admin information
-                </h2>
-                <ul className="list-group">
-                    <li className="list-group-item">{name}</li>
-                    <li className="list-group-item">{email}</li>
-                    <li className="list-group-item">{role === 1 ? "Admin" : "Registered User"}</li>
-                </ul>
+            <div className="mx-4">
+                <div className="card">
+                    <h2 className="card-header">
+                        Admin information
+                    </h2>
+                    <ul className="list-group">
+                        <li className="list-group-item">Name:{name}</li>
+                        <li className="list-group-item">email:{email}</li>
+                        <li className="list-group-item  ">role:{role === 1 ? "Admin" : "Registered User"}</li>
+                    </ul>
 
+                </div>
             </div>
         );
 
@@ -48,7 +50,7 @@ function AdminDashboard() {
     };
 
     return (
-        <Layout title="Dashboard" description={`Good day ${name}`} className="container-fluid" >
+        <Layout title="Admin Dashboard" description={`Good day ${name}`} className="container-fluid" >
             <div className="row">
                 <div className="col-md-3">
                     <AdminLinks />
